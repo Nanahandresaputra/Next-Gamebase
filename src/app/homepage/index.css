@@ -1,0 +1,14 @@
+.gradient-shadow-btm {
+  background: linear-gradient(
+    0deg,
+    rgba(7, 15, 43, 1) 0%,
+    rgba(7, 15, 43, 0) 100%
+  );
+}
+.gradient-shadow-top {
+  background: linear-gradient(
+    180deg,
+    rgba(7, 15, 43, 1) 0%,
+    rgba(7, 15, 43, 0) 100%
+  );
+}
