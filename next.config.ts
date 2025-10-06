@@ -11,6 +11,17 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "media.rawg.io",
+        port: "",
+        pathname: "/media/games/**",
+        search: "",
+      },
+    ],
+  },
 };
 
 export default nextConfig;
