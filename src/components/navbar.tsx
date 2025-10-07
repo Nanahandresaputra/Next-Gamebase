@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { MdOutlineMenu } from "react-icons/md";
 import { FiSearch } from "react-icons/fi";
+import { useRouter } from "next/navigation";
 
 // Icons from lucide-react, commonly used with shadcn/ui
 
@@ -12,14 +13,15 @@ const Navbar = () => {
 
   // Navigation links data
   const navLinks = [
-    { href: "#", label: "Features" },
-    { href: "#", label: "Pricing" },
-    { href: "#", label: "About" },
-    { href: "#", label: "Contact" },
+    { href: "/homepage", label: "Home" },
+    { href: "/news", label: "News" },
+    { href: "/about", label: "About" },
   ];
 
+  const router = useRouter()
+
   return (
-    <header className="bg-[#070F2B] backdrop-blur-sm sticky top-0 z-50 w-full">
+    <header className="bg-[#070F2B] backdrop-blur-sm sticky top-0 z-[999999] w-full">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo Section */}
@@ -28,13 +30,14 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-6">
             {navLinks.map((link) => (
-              <a
+              <p
                 key={link.label}
-                href={link.href}
-                className="text-sm font-medium text-gray-300 hover:text-white transition-colors duration-300"
+                // href={link.href}
+                onClick={() => router.push(link.href)}
+                className="text-sm font-medium text-gray-300 hover:text-white transition-colors duration-300 hover:cursor-pointer"
               >
                 {link.label}
-              </a>
+              </p>
             ))}
           </nav>
 

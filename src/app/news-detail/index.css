@@ -1,0 +1,14 @@
+.detailStyle a {
+  color: white;
+  opacity: 100%;
+  text-decoration: underline;
+}
+
+.detailStyle a:hover {
+  opacity: 70%;
+  cursor: pointer;
+}
+
+.detailStyle div {
+  margin-top: 20px;
+}

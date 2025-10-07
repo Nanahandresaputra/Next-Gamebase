@@ -1,4 +1,4 @@
-export const detialsGame = {
+export const detailsGame = {
   id: 3498,
   slug: "grand-theft-auto-v",
   name: "Grand Theft Auto V",

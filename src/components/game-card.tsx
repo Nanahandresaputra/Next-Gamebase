@@ -21,7 +21,7 @@ const GameCard = ({ imgUrl, title, rating, onClick }: PropTypes) => {
                     <Button shape='circle' type='outlined'>Detail</Button>
                 </div>
             </div> */}
-            <div className="relative w-full h-[10vh]">
+            <div className="relative w-full h-[30vh]">
                 <Image
                     unoptimized={true}
                     loader={() => imgUrl}

@@ -9,21 +9,24 @@ import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import Image from "next/image";
 import Button from "@/components/button";
+import { listGames } from "@/dummy-data/list-games";
+import { IoStar } from "react-icons/io5";
 
-const dataDummy = [
-  {
-    imgurl: "/assets/dummy/hero-section/game-1.webp",
-    price: 500000,
-  },
-  {
-    imgurl: "/assets/dummy/hero-section/game-2.webp",
-    price: 720000,
-  },
-  {
-    imgurl: "/assets/dummy/hero-section/game-3.webp",
-    price: 300000,
-  },
-];
+const dataDummy = listGames.results.slice(0, 3)
+// [
+//   {
+//     imgurl: "/assets/dummy/hero-section/game-1.webp",
+//     price: 500000,
+//   },
+//   {
+//     imgurl: "/assets/dummy/hero-section/game-2.webp",
+//     price: 720000,
+//   },
+//   {
+//     imgurl: "/assets/dummy/hero-section/game-3.webp",
+//     price: 300000,
+//   },
+// ];
 
 
 const HeroSection = () => {
@@ -46,23 +49,29 @@ const HeroSection = () => {
         {dataDummy.map((data, index) => (
           <SwiperSlide key={index}>
             <div className={`relative`}>
-              <div className="absolute z-50 bottom-0 w-full gradient-shadow-btm h-[25vh]" />
-              <div className="absolute z-50 top-0 w-full gradient-shadow-top h-[25vh]" />
+              <div className="absolute z-50 bottom-0 w-full gradient-shadow-btm h-[45vh]" />
+              <div className="absolute z-50 top-0 w-full gradient-shadow-top h-[45vh]" />
               <div className="absolute z-50 h-full w-full flex justify-center items-center">
-                <div className="h-[60vh] container mx-auto px-4 sm:px-6 lg:px-8 flex justify-end items-end text-white">
-                  <div className="space-y-3">
-                    <p className="text-3xl font-semibold text-white">$ 99.87</p>
-                    <Button shape="circle" className="text-xl font-semibold w-60 flex justify-center items-center" >Buy Now</Button>
-                    <Button type="outlined" shape="circle" className="text-xl font-semibold w-60 flex justify-center items-center" >Add to Wishlist</Button>
+                <div className="h-[80vh] container mx-auto px-4 sm:px-6 lg:px-8 flex justify-end items-end text-white">
+                  <div className="space-y-3 flex flex-col items-end">
+                    <p className="text-6xl font-semibold text-white drop-shadow-2xl drop-shadow-black">{data.name}</p>
+                    <Button shape="circle" className="text-xl font-semibold w-60 flex justify-center items-center" >Detail</Button>
+                    <div className="text-xl font-semibold w-60 rounded-full py-2 px-5 border border-white flex justify-between items-center">
+                      <p>Rating</p>
+                      <p className='flex items-center space-x-2'>
+                        <span>{data.rating}</span>
+                        <IoStar fill='gold' strokeWidth={10} />
+                      </p>
+                    </div>
 
                   </div>
                 </div>
               </div>
               <div className="w-screen h-[90vh] ">
                 <Image
-                  src={data.imgurl}
+                  src={data.background_image}
                   alt="imgurl"
-                  className="object-cover" fill
+                  className="object-cover object-top" fill
                 />
               </div>
             </div>

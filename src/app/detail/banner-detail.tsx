@@ -29,13 +29,13 @@ const BannerDetail = () => {
     return (
         <section>
             <Swiper
-                style={{
-                    '--swiper-navigation-color': '#fff',
-                    '--swiper-pagination-color': '#fff',
-                } as CSSProperties}
+                // style={{
+                //     '--swiper-navigation-color': '#fff',
+                //     '--swiper-pagination-color': '#fff',
+                // } as CSSProperties}
                 loop={true}
                 spaceBetween={10}
-                navigation={true}
+                // navigation={true}
                 thumbs={{ swiper: thumbsSwiper }}
                 modules={[FreeMode, Navigation, Thumbs]}
                 className="mySwiper2"
@@ -45,9 +45,9 @@ const BannerDetail = () => {
                         <SwiperSlide key={index}>
                             {
                                 index === 0 ? (
-                                    <Video videoUrl={data.isData} className='h-[60vh] w-full object-cover' poster={data.preview} />
+                                    <Video videoUrl={data.isData} className='h-[53vh] w-full object-cover rounded-t-md' poster={data.preview} />
                                 ) : (
-                                    <div className="relative h-[60vh] ">
+                                    <div className="relative h-[53vh] ">
                                         <Image
                                             unoptimized={true}
                                             loader={() => data.isData}
@@ -69,21 +69,28 @@ const BannerDetail = () => {
                 loop={true}
                 spaceBetween={10}
                 slidesPerView={4}
+                navigation={true}
                 freeMode={true}
                 watchSlidesProgress={true}
                 modules={[FreeMode, Navigation, Thumbs]}
                 className="mySwiper"
+                style={{
+                    '--swiper-navigation-color': '#fff',
+                    '--swiper-pagination-color': '#fff',
+                } as CSSProperties}
             >
                 {
                     mediaset.map((data, index) => (
-                        <SwiperSlide key={index}>
+                        <SwiperSlide key={index}
+
+                        >
                             <div className="relative h-[10vh] ">
                                 <Image
                                     unoptimized={true}
                                     loader={() => data.preview}
                                     src={data.preview}
                                     alt="imgurl"
-                                    className="object-cover rounded-t-md" fill
+                                    className="object-cover rounded-md" fill
                                 />
                             </div>
                         </SwiperSlide>
