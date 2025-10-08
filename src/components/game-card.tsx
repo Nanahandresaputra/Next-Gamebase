@@ -16,12 +16,7 @@ interface PropTypes {
 const GameCard = ({ imgUrl, title, rating, onClick }: PropTypes) => {
     return (
         <section className='rounded-md bg-[#9290C3]/15 text-white/70 shadow-lg drop-shadow-xl relative' onClick={onClick}>
-            {/* <div className='absolute z-50 bg-black/70 w-full group-hover:h-full flex justify-center items-center rounded-md h-0 transition-all duration-500 bottom-0'>
-                <div className='hidden group-hover:block'>
-                    <Button shape='circle' type='outlined'>Detail</Button>
-                </div>
-            </div> */}
-            <div className="relative w-full h-[30vh]">
+            <div className="relative w-full h-[20vh] lg:h-[30vh]">
                 <Image
                     unoptimized={true}
                     loader={() => imgUrl}
@@ -31,8 +26,8 @@ const GameCard = ({ imgUrl, title, rating, onClick }: PropTypes) => {
                 />
             </div>
             <div className='p-3 space-y-3'>
-                <p className='font-semibold text-xl h-16 hover:text-white hover:cursor-pointer'>{title}</p>
-                <div className='flex justify-between items-center'>
+                <p className='font-semibold lg:text-xl h-12 lg:h-16 hover:text-white hover:cursor-pointer'>{title}</p>
+                <div className='flex justify-between items-center text-sm lg:text-base'>
                     <p >Rating</p>
                     <p className='flex items-center space-x-2'>
                         <span>{rating}</span>

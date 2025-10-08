@@ -4,6 +4,7 @@ import { IoClose } from "react-icons/io5";
 import { MdOutlineMenu } from "react-icons/md";
 import { FiSearch } from "react-icons/fi";
 import { useRouter } from "next/navigation";
+import CategoryList from "./category-list";
 
 // Icons from lucide-react, commonly used with shadcn/ui
 
@@ -90,6 +91,9 @@ const Navbar = () => {
                 {link.label}
               </a>
             ))}
+            <div className="px-3 py-2">
+              <CategoryList />
+            </div>
           </div>
         </div>
       )}

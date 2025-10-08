@@ -30,18 +30,19 @@
 
 .detailStyle .fluid-height {
   display: flex;
+  flex-wrap: wrap !important;
   justify-content: center;
   padding: 0 !important;
 }
 
-.gradient-shadow-btm {
+.gradient-shadow-btm-news-detail {
   background: linear-gradient(
     0deg,
     rgba(7, 15, 43, 1) 10%,
     rgba(7, 15, 43, 0) 86%
   );
 }
-.gradient-shadow-top {
+.gradient-shadow-top-news-detail {
   background: linear-gradient(
     180deg,
     rgba(7, 15, 43, 1) 10%,

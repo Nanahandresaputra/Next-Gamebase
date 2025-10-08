@@ -49,16 +49,16 @@ const HeroSection = () => {
         {dataDummy.map((data, index) => (
           <SwiperSlide key={index}>
             <div className={`relative`}>
-              <div className="absolute z-50 bottom-0 w-full gradient-shadow-btm h-[45vh]" />
-              <div className="absolute z-50 top-0 w-full gradient-shadow-top h-[45vh]" />
+              <div className="absolute z-50 bottom-0 w-full gradient-shadow-btm-home h-[46vh] lg:h-[45vh]" />
+              <div className="absolute z-50 top-0 w-full gradient-shadow-top-home hidden lg:block h-[45vh]" />
               <div className="absolute z-50 h-full w-full flex justify-center items-center">
-                <div className="h-[80vh] container mx-auto px-4 sm:px-6 lg:px-8 flex justify-end items-end text-white">
+                <div className="h-[40vh] lg:h-[80vh] container mx-auto px-4 sm:px-6 lg:px-8 flex justify-end items-end text-white">
                   <div className="space-y-3 flex flex-col items-end">
-                    <p className="text-6xl font-semibold text-white drop-shadow-2xl drop-shadow-black">{data.name}</p>
-                    <Button shape="circle" className="text-xl font-semibold w-60 flex justify-center items-center" >Detail</Button>
-                    <div className="text-xl font-semibold w-60 rounded-full py-2 px-5 border border-white flex justify-between items-center">
-                      <p>Rating</p>
-                      <p className='flex items-center space-x-2'>
+                    <p className="text-3xl lg:text-6xl font-semibold text-white drop-shadow-2xl drop-shadow-black">{data.name}</p>
+                    <Button shape="circle" className=" text-sm lg:text-xl font-semibold w-40 lg:w-60 flex justify-center items-center" >Detail</Button>
+                    <div className="text-sm lg:text-xl font-semibold w-40 lg:w-60 rounded-full py-2 px-5 border border-white flex justify-between items-center">
+                      <p >Rating</p>
+                      <p className=' flex items-center space-x-2'>
                         <span>{data.rating}</span>
                         <IoStar fill='gold' strokeWidth={10} />
                       </p>
@@ -67,7 +67,7 @@ const HeroSection = () => {
                   </div>
                 </div>
               </div>
-              <div className="w-screen h-[90vh] ">
+              <div className="w-screen h-[46vh] lg:h-[90vh] ">
                 <Image
                   src={data.background_image}
                   alt="imgurl"

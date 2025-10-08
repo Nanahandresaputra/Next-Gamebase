@@ -1,0 +1,38 @@
+.gradient-shadow-btm-about {
+  background: linear-gradient(
+    0deg,
+    rgba(7, 15, 43, 1) 0%,
+    rgba(7, 15, 43, 0.3) 100%
+  );
+}
+.gradient-shadow-left {
+  background: linear-gradient(
+    90deg,
+    rgba(7, 15, 43, 1) 30%,
+    rgba(7, 15, 43, 0.7) 100%
+  );
+}
+.gradient-shadow-right {
+  background: linear-gradient(
+    270deg,
+    rgba(7, 15, 43, 1) 30%,
+    rgba(7, 15, 43, 0.7) 100%
+  );
+}
+
+@media (width >= 64rem /* 1024px */) {
+  .gradient-shadow-left {
+    background: linear-gradient(
+      90deg,
+      rgba(7, 15, 43, 1) 10%,
+      rgba(7, 15, 43, 0.5) 100%
+    );
+  }
+  .gradient-shadow-right {
+    background: linear-gradient(
+      270deg,
+      rgba(7, 15, 43, 1) 10%,
+      rgba(7, 15, 43, 0.5) 100%
+    );
+  }
+}

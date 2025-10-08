@@ -13,17 +13,17 @@ const ListGames = () => {
 
     return (
         <section className='grid grid-cols-6'>
-            <div className='col-span-5 grid grid-cols-4 gap-5'>
+            <div className='order-2 lg:order-1 col-span-6 lg:col-span-5 grid grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-5'>
                 {
                     listGames.results.map((data, index) => (
                         <GameCard key={index} imgUrl={data.background_image} title={data.name} rating={data.rating} onClick={() => router.push('/detail')} />
                     ))
                 }
-                <div className='col-span-4 flex justify-center w-full mt-14'>
+                <div className=' col-span-2 lg:col-span-4 flex justify-center w-full mt-14'>
                     <PaginationComp />
                 </div>
             </div>
-            <div className='col-span-1 flex justify-end'>
+            <div className='order-1 lg:order-2 col-span-6 lg:col-span-1 hidden lg:flex lg:justify-end'>
                 <CategoryList />
             </div>
         </section>

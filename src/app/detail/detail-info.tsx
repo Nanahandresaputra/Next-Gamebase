@@ -52,36 +52,36 @@ const DetailInfo = ({ released, website, rating, parent_platforms, genres, esrbR
 
 
     return (
-        <section>
-            <div className='py-5 border-white/70 border-y'>
+        <section className='text-sm lg:text-base'>
+            <div className='py-3 lg:py-5 border-white/70 border-y'>
                 <EsrbRatings slug={esrbRating.slug} name={esrbRating.name} />
             </div>
-            <div className='flex justify-between py-5 border-white/70 border-b'>
+            <div className='flex justify-between py-3 lg:py-5 border-white/70 border-b'>
                 <p className='text-white/70'>Released</p>
                 <p className='text-white'>{moment(released).format('DD MMMM YYYY')}</p>
             </div>
-            <div className='flex justify-between py-5 border-white/70 border-b'>
+            <div className='flex justify-between py-3 lg:py-5 border-white/70 border-b'>
                 <p className='text-white/70'>Rating</p>
                 <p className='text-white'>{rating}</p>
             </div>
-            <div className='flex justify-between py-5 border-white/70 border-b'>
+            <div className='flex justify-between py-3 lg:py-5 border-white/70 border-b'>
                 <p className='text-white/70'>Genres</p>
                 <p className='text-white'>{genres.toString().replaceAll(',', ', ')}</p>
             </div>
-            <div className='flex justify-between py-5 border-white/70 border-b'>
+            <div className='flex justify-between py-3 lg:py-5 border-white/70 border-b'>
                 <p className='text-white/70'>Platforms</p>
                 <p className='text-white'>{parent_platforms.toString().replaceAll(',', ', ')}</p>
             </div>
-            <div className='flex justify-between py-5 border-white/70 border-b'>
+            <div className='flex justify-between py-3 lg:py-5 border-white/70 border-b'>
                 <p className='text-white/70'>Website</p>
                 <p className='text-white'>{website}</p>
             </div>
-            <div className='flex justify-between py-5 border-white/70 border-b'>
+            <div className='flex justify-between py-3 lg:py-5 border-white/70 border-b'>
                 <p className='text-white/70'>Developers</p>
 
                 <p className='text-white'>{developers.toString().replaceAll(',', ', ')}</p>
             </div>
-            <div className='flex justify-between py-5 border-white/70 border-b'>
+            <div className='flex justify-between py-3 lg:py-5 border-white/70 border-b'>
                 <p className='text-white/70'>Publishers</p>
                 <p className='text-white'>{publisher.toString().replaceAll(',', ', ')}</p>
             </div>

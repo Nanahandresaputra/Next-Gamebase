@@ -1,11 +1,11 @@
-.gradient-shadow-btm {
+.gradient-shadow-btm-news {
   background: linear-gradient(
     0deg,
     rgba(7, 15, 43, 1) 5%,
     rgba(7, 15, 43, 0) 86%
   );
 }
-.gradient-shadow-top {
+.gradient-shadow-top-news {
   background: linear-gradient(
     180deg,
     rgba(7, 15, 43, 1) 5%,

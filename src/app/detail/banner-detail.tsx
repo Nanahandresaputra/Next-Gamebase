@@ -45,9 +45,9 @@ const BannerDetail = () => {
                         <SwiperSlide key={index}>
                             {
                                 index === 0 ? (
-                                    <Video videoUrl={data.isData} className='h-[53vh] w-full object-cover rounded-t-md' poster={data.preview} />
+                                    <Video videoUrl={data.isData} className='h-[25vh] lg:h-[53vh] w-full object-cover rounded-t-md' poster={data.preview} />
                                 ) : (
-                                    <div className="relative h-[53vh] ">
+                                    <div className="relative h-[25vh] lg:h-[53vh] ">
                                         <Image
                                             unoptimized={true}
                                             loader={() => data.isData}
@@ -84,7 +84,7 @@ const BannerDetail = () => {
                         <SwiperSlide key={index}
 
                         >
-                            <div className="relative h-[10vh] ">
+                            <div className="relative h-[5vh] lg:h-[10vh] ">
                                 <Image
                                     unoptimized={true}
                                     loader={() => data.preview}
