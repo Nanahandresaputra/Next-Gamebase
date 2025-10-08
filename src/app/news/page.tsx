@@ -21,7 +21,7 @@ const News = () => {
 
 
     const setDetailData = (detail: DetailNewsInterface) => {
-        contextData?.setDetailNews({ title: detail.title, body: detail.body, authors: detail.authors, publish_date: detail.publish_date })
+        contextData?.setDetailNews({ title: detail.title, body: detail.body, authors: detail.authors, publish_date: detail.publish_date, image: detail.image })
         router.push('/news-detail')
     }
     return (

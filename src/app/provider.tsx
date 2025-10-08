@@ -4,7 +4,15 @@
 import { HeroUIProvider } from '@heroui/react'
 import { createContext, Dispatch, SetStateAction, useState } from 'react'
 
+interface DetailNewsImage {
+    square_tiny: string,
+    screen_tiny: string,
+    square_small: string,
+    original: string
+}
+
 export interface DetailNewsInterface {
+    image: DetailNewsImage,
     authors: string,
     title: string,
     body: string,
