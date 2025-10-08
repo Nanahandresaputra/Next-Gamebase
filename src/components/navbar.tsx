@@ -29,7 +29,7 @@ const Navbar = () => {
           <img src="/assets/g-logo.png" alt="logo" className="h-8 w-8" />
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-6">
+          <nav className="flex items-center space-x-10">
             {navLinks.map((link) => (
               <p
                 key={link.label}
@@ -80,9 +80,10 @@ const Navbar = () => {
 
       {/* Mobile Menu Dropdown (Sheet) */}
       {isMenuOpen && (
-        <div className="md:hidden border-t border-gray-700" id="mobile-menu">
+        <div className=" border-t border-gray-700" id="mobile-menu">
+
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            {navLinks.map((link) => (
+            {/* {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
@@ -90,8 +91,23 @@ const Navbar = () => {
               >
                 {link.label}
               </a>
-            ))}
-            <div className="px-3 py-2">
+            ))} */}
+            <div className="px-3 py-2 space-y-5">
+              <div className="relative w-full">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <FiSearch className="text-gray-500" />
+                </div>
+                <input
+                  type="text"
+                  placeholder="Search"
+                  className="
+                    bg-[#1B1A55] border border-gray-700 rounded-xl 
+                    pl-10 pr-4 py-2 md:w-64 text-white placeholder-gray-500
+                    focus:outline-none focus:ring-2 focus:ring-gray-600
+                    transition-all duration-300 w-full
+                  "
+                />
+              </div>
               <CategoryList />
             </div>
           </div>

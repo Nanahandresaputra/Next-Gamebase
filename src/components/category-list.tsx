@@ -12,7 +12,7 @@ const CategoryList = () => {
     }))
 
     return (
-        <CheckboxGroup defaultValue={["buenos-aires", "london"]} label="Category" classNames={{ label: 'text-white/70 font-semibold mb-5', wrapper: 'grid grid-cols-2 lg:flex flex-col' }} >
+        <CheckboxGroup defaultValue={["buenos-aires", "london"]} label="Category" classNames={{ label: 'text-white/70 font-semibold lg:mb-5', wrapper: 'grid grid-cols-2 lg:flex flex-col' }} >
             {genres.map((data, index) => (
                 <Checkbox key={index} classNames={{ label: 'text-white/70', }} value={data.value.toString()}>{data.label}</Checkbox>
             ))}
