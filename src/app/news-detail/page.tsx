@@ -40,8 +40,8 @@ const NewsDetail = () => {
                     <div className="w-screen h-[30vh] lg:h-[50vh] ">
                         <Image
                             unoptimized={true}
-                            loader={() => contextData?.detailNews.image?.original ?? ''}
-                            src={contextData?.detailNews.image?.original ?? ''}
+                            loader={() => contextData?.detailNews.image?.original ?? 'https://www.codecks.io/_astro/steam_header.lQtF3kFc.jpg'}
+                            src={contextData?.detailNews.image?.original ?? 'https://www.codecks.io/_astro/steam_header.lQtF3kFc.jpg'}
                             alt="imgurlBannerdetailnews"
                             className="object-cover" fill
                         />
@@ -50,7 +50,7 @@ const NewsDetail = () => {
 
 
             </div>
-            <div dangerouslySetInnerHTML={{ __html: contextData?.detailNews.body ?? '' }} className='text-white/70 space-y-3 detailStyle text-justify text-sm lg:text-base' />
+            <div dangerouslySetInnerHTML={{ __html: contextData?.detailNews.body ?? 'https://www.codecks.io/_astro/steam_header.lQtF3kFc.jpg' }} className='text-white/70 space-y-3 detailStyle text-justify text-sm lg:text-base' />
         </section>
     )
 }

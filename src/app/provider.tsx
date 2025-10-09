@@ -1,40 +1,31 @@
 // app/providers.tsx
 'use client'
 
+import { store } from '@/store/store'
 import { HeroUIProvider } from '@heroui/react'
-import { createContext, Dispatch, SetStateAction, useState } from 'react'
+import { createContext, useState } from 'react'
+import { Provider } from 'react-redux'
+import { DetailNewsInterface, GlobalContextInterface } from './providerContext.interface'
 
-interface DetailNewsImage {
-    square_tiny: string,
-    screen_tiny: string,
-    square_small: string,
-    original: string
-}
 
-export interface DetailNewsInterface {
-    image: DetailNewsImage,
-    authors: string,
-    title: string,
-    body: string,
-    publish_date: string
-}
-
-interface GlobalContextInterface {
-    detailNews: DetailNewsInterface,
-    setDetailNews: Dispatch<SetStateAction<DetailNewsInterface>>
-}
 
 export const GlobalContext = createContext<GlobalContextInterface | null>(null)
 
 export function Providers({ children }: { children: React.ReactNode }) {
 
     const [detailNews, setDetailNews] = useState<DetailNewsInterface>({} as DetailNewsInterface)
+    const [search, setSearch] = useState<string>('')
+    const [selectGenre, setSelectGenre] = useState<string>('')
+
 
     return (
-        <HeroUIProvider>
-            <GlobalContext.Provider value={{ detailNews, setDetailNews }} >
-                {children}
-            </GlobalContext.Provider>
-        </HeroUIProvider>
+        <Provider store={store}>
+
+            <HeroUIProvider>
+                <GlobalContext.Provider value={{ detailNews, setDetailNews, search, setSearch, selectGenre, setSelectGenre }} >
+                    {children}
+                </GlobalContext.Provider>
+            </HeroUIProvider>
+        </Provider>
     )
 }

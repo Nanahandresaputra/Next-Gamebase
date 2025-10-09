@@ -1,16 +1,20 @@
 "use client";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { MdOutlineMenu } from "react-icons/md";
 import { FiSearch } from "react-icons/fi";
 import { useRouter } from "next/navigation";
 import CategoryList from "./category-list";
+import { GlobalContext } from "@/app/provider";
+import { store } from "@/store/store";
+import { setListGamesAction } from "@/store/features/game/game-slice";
 
 // Icons from lucide-react, commonly used with shadcn/ui
 
 const Navbar = () => {
   // State to manage the visibility of the mobile menu
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const contextData = useContext(GlobalContext)
 
   // Navigation links data
   const navLinks = [
@@ -18,6 +22,11 @@ const Navbar = () => {
     { href: "/news", label: "News" },
     { href: "/about", label: "About" },
   ];
+
+  const setSearch = (e: string) => {
+    contextData?.setSearch(e)
+    store.dispatch(setListGamesAction.currentPage(1))
+  }
 
   const router = useRouter()
 
@@ -51,6 +60,7 @@ const Navbar = () => {
               <input
                 type="text"
                 placeholder="Search"
+                onChange={(e) => setSearch(e.target.value)}
                 className="
                     bg-[#1B1A55] border border-gray-700 rounded-xl 
                     pl-10 pr-4 py-2 w-40 md:w-64 text-white placeholder-gray-500
@@ -100,6 +110,7 @@ const Navbar = () => {
                 <input
                   type="text"
                   placeholder="Search"
+                  onChange={(e) => setSearch(e.target.value)}
                   className="
                     bg-[#1B1A55] border border-gray-700 rounded-xl 
                     pl-10 pr-4 py-2 md:w-64 text-white placeholder-gray-500
