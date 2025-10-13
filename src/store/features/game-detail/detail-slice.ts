@@ -63,7 +63,6 @@ export const getTrailerGameAction = createAsyncThunk(
       })
         .then((res) => {
           resolve(res.results);
-          console.log("action res ---tray >", res, res.results);
           return res.results;
         })
         .catch((err) => {
@@ -118,7 +117,6 @@ const detailGameSlice = createSlice({
       state.isLoadingTrailer = true;
     });
     builder.addCase(getTrailerGameAction.fulfilled, (state, action) => {
-      console.log("action -->", action.payload);
       state.isLoadingTrailer = false;
       state.trailerData = action.payload;
     });

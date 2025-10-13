@@ -22,7 +22,6 @@ const News = () => {
 
     // const newsList = newsData.results
 
-    console.log('newlist -->', newsList)
 
     const contextData = useContext(GlobalContext);
 

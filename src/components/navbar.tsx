@@ -32,7 +32,6 @@ const Navbar = () => {
 
   const location = usePathname()
 
-  console.log({ location })
 
   return (
     <header className="bg-[#070F2B] backdrop-blur-sm sticky top-0 z-[999999] w-full">

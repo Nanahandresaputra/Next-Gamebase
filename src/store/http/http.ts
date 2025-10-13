@@ -13,11 +13,9 @@ export const httpGet = async ({ params, url }: HttpGet) => {
     // withCredentials: true,
   })
     .then((res) => {
-      console.log({ res });
       return res.data;
     })
     .catch((err) => {
-      console.log({ err });
       return err;
     });
 };

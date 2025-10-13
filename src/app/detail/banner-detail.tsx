@@ -42,11 +42,9 @@ const BannerDetail = ({ trailerData, screenshot, isLoadingSs, isLoadingTrailer, 
 
 
 
-    console.log({ trailerData, screenshot })
 
     const [thumbsSwiper, setThumbsSwiper] = useState<SwiperCore | null>(null)
 
-    console.log({ mediaset })
 
     return (
         <section className='space-y-3'>

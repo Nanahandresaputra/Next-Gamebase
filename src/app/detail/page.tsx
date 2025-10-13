@@ -44,7 +44,6 @@ const DetailGame = () => {
         }
     }, [])
 
-    console.log({ data })
 
     useEffect(() => {
         getDetailGame()
