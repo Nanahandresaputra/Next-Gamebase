@@ -16,7 +16,7 @@ export const getDetailGameAction = createAsyncThunk(
       const paramsGet: DetailGameParams = { ...params, key: config.keyRawg };
 
       httpGet({
-        params: paramsGet,
+        params: { key: paramsGet.key },
         url: `${config.baseUrlRawg}/games/${paramsGet.game_id}`,
       })
         .then((res) => {
@@ -37,11 +37,11 @@ export const getScreenshotGameAction = createAsyncThunk(
       const paramsGet: DetailGameParams = { ...params, key: config.keyRawg };
 
       httpGet({
-        params: paramsGet,
+        params: { key: paramsGet.key },
         url: `${config.baseUrlRawg}/games/${paramsGet.game_id}/screenshots`,
       })
         .then((res) => {
-          resolve(res);
+          resolve(res.results);
           return res.results;
         })
         .catch((err) => {
@@ -58,11 +58,12 @@ export const getTrailerGameAction = createAsyncThunk(
       const paramsGet: DetailGameParams = { ...params, key: config.keyRawg };
 
       httpGet({
-        params: paramsGet,
+        params: { key: paramsGet.key },
         url: `${config.baseUrlRawg}/games/${paramsGet.game_id}/movies`,
       })
         .then((res) => {
-          resolve(res);
+          resolve(res.results);
+          console.log("action res ---tray >", res, res.results);
           return res.results;
         })
         .catch((err) => {
@@ -117,12 +118,15 @@ const detailGameSlice = createSlice({
       state.isLoadingTrailer = true;
     });
     builder.addCase(getTrailerGameAction.fulfilled, (state, action) => {
+      console.log("action -->", action.payload);
       state.isLoadingTrailer = false;
       state.trailerData = action.payload;
     });
-    // builder.addCase
-
-    // ONPROGRESSS
+    builder.addCase(getTrailerGameAction.rejected, (state) => {
+      state.isLoadingTrailer = false;
+      state.isError = true;
+      state.trailerData = [];
+    });
   },
 });
 

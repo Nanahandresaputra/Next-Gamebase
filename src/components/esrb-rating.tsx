@@ -59,12 +59,12 @@ const EsrbRatings = ({ slug, name, className }: PropTypes) => {
             <div className="relative w-52">
                 <Image
                     unoptimized={true}
-                    src={ratingList({ name })[slug as keyof typeof ratingList]['img']}
+                    src={ratingList({ name })[slug as keyof typeof ratingList]?.['img'] ?? 'https://www.codecks.io/_astro/steam_header.lQtF3kFc.jpg'}
                     alt="bannerImg"
                     className="object-contain" fill
                 />
             </div>
-            <p className='text-white/70 text-justify'>{ratingList({ name })[slug as keyof typeof ratingList]['description']}</p>
+            <p className='text-white/70 text-justify'>{ratingList({ name })[slug as keyof typeof ratingList]?.['description']}</p>
         </section>
     )
 }

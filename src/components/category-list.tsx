@@ -31,7 +31,6 @@ const CategoryList = () => {
     }
 
     useEffect(() => {
-        // This code will only run on the client-side
         const genres = localStorage?.listGenres;
         if (genres) {
             setInitialGenres(JSON.parse(genres));

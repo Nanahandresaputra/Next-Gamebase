@@ -6,6 +6,11 @@ export const httpGet = async ({ params, url }: HttpGet) => {
     method: "GET",
     params,
     url,
+    // headers: {
+    //   "Access-Control-Allow-Origin": "*",
+    //   "Content-Type": "application/json",
+    // },
+    // withCredentials: true,
   })
     .then((res) => {
       console.log({ res });

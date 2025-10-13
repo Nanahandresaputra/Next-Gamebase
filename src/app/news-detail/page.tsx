@@ -1,11 +1,14 @@
 'use client'
 
-import React, { useContext, useEffect } from 'react'
+import React, { useCallback, useContext, useEffect } from 'react'
 import { GlobalContext } from '../provider'
 import { useRouter } from 'next/navigation'
 import './index.css'
 import moment from 'moment'
 import Image from 'next/image'
+import { useDispatch } from 'react-redux'
+import { AppDispatch } from '@/store/store'
+import { getNewsAction } from '@/store/features/news/news-slice'
 
 
 
@@ -15,11 +18,14 @@ const NewsDetail = () => {
 
     const router = useRouter()
 
+
     useEffect(() => {
         if (!contextData?.detailNews.body) {
             router.push('/news')
         }
     }, [contextData?.detailNews])
+
+
 
 
     return (

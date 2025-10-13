@@ -2,6 +2,7 @@
   "name": "games-info",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://www.gamespot.com/api",
   "scripts": {
     "dev": "next dev --turbopack -p 4000",
     "build": "next build --turbopack",

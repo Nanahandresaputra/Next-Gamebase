@@ -12,6 +12,7 @@ import Button from "@/components/button";
 import { IoStar } from "react-icons/io5";
 import { ListGames as ListGamesInterface } from "@/store/features/game/game.interface";
 import SkeletonHeroSectionHome from "@/components/skeleton-hero-section-home";
+import { useRouter } from "next/navigation";
 
 interface PropTypes {
   listGames: ListGamesInterface
@@ -31,6 +32,13 @@ const HeroSection = ({ listGames, isLoading }: PropTypes) => {
     return spliceDatas
   }, [listGames])
 
+  const router = useRouter()
+
+
+  const toDetail = (gameId: number) => {
+    localStorage.setItem('gameId', gameId.toString())
+    router.push('/detail')
+  }
 
 
   return (
@@ -47,7 +55,7 @@ const HeroSection = ({ listGames, isLoading }: PropTypes) => {
           } as CSSProperties}
           loop={true}
           autoplay={{
-            delay: 6000,
+            delay: 8000,
             disableOnInteraction: false,
           }}
           navigation={true}
@@ -63,7 +71,7 @@ const HeroSection = ({ listGames, isLoading }: PropTypes) => {
                   <div className="h-[40vh] lg:h-[80vh] container mx-auto px-4 sm:px-6 lg:px-8 flex justify-end items-end text-white">
                     <div className="space-y-3 flex flex-col items-end">
                       <p className="text-3xl lg:text-6xl font-semibold text-white drop-shadow-2xl drop-shadow-black">{data.name}</p>
-                      <Button shape="circle" className=" text-sm lg:text-xl font-semibold w-40 lg:w-60 flex justify-center items-center" >Detail</Button>
+                      <Button shape="circle" onClick={() => toDetail(data.id)} className=" text-sm lg:text-xl font-semibold w-40 lg:w-60 flex justify-center items-center" >Detail</Button>
                       <div className="text-sm lg:text-xl font-semibold w-40 lg:w-60 rounded-full py-2 px-5 border border-white flex justify-between items-center">
                         <p >Rating</p>
                         <p className=' flex items-center space-x-2'>

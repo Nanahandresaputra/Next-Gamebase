@@ -3,7 +3,7 @@ import React, { useContext, useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { MdOutlineMenu } from "react-icons/md";
 import { FiSearch } from "react-icons/fi";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import CategoryList from "./category-list";
 import { GlobalContext } from "@/app/provider";
 import { store } from "@/store/store";
@@ -30,6 +30,10 @@ const Navbar = () => {
 
   const router = useRouter()
 
+  const location = usePathname()
+
+  console.log({ location })
+
   return (
     <header className="bg-[#070F2B] backdrop-blur-sm sticky top-0 z-[999999] w-full">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -51,40 +55,43 @@ const Navbar = () => {
             ))}
           </nav>
 
-          {/* CTA Button, Theme Toggle and Mobile Menu Toggle */}
-          <div className="flex items-center gap-4">
-            <div className="relative hidden sm:block">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <FiSearch className="text-gray-500" />
-              </div>
-              <input
-                type="text"
-                placeholder="Search"
-                onChange={(e) => setSearch(e.target.value)}
-                className="
+          {
+            location === '/homepage' ? (
+              <div className="flex items-center gap-4">
+                <div className="relative hidden sm:block">
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <FiSearch className="text-gray-500" />
+                  </div>
+                  <input
+                    type="text"
+                    placeholder="Search"
+                    onChange={(e) => setSearch(e.target.value)}
+                    className="
                     bg-[#1B1A55] border border-gray-700 rounded-xl 
                     pl-10 pr-4 py-2 w-40 md:w-64 text-white placeholder-gray-500
                     focus:outline-none focus:ring-2 focus:ring-gray-600
                     transition-all duration-300
                   "
-              />
-            </div>
-            {/* Mobile Menu Button */}
-            <div className="md:hidden">
-              <button
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="inline-flex items-center justify-center p-2 rounded-md text-gray-300 hover:text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-400 transition-colors duration-300"
-                aria-expanded={isMenuOpen}
-              >
-                <span className="sr-only">Open main menu</span>
-                {isMenuOpen ? (
-                  <IoClose className="text-white" />
-                ) : (
-                  <MdOutlineMenu className="text-white" />
-                )}
-              </button>
-            </div>
-          </div>
+                  />
+                </div>
+                {/* Mobile Menu Button */}
+                <div className="md:hidden">
+                  <button
+                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+                    className="inline-flex items-center justify-center p-2 rounded-md text-gray-300 hover:text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-400 transition-colors duration-300"
+                    aria-expanded={isMenuOpen}
+                  >
+                    <span className="sr-only">Open main menu</span>
+                    {isMenuOpen ? (
+                      <IoClose className="text-white" />
+                    ) : (
+                      <MdOutlineMenu className="text-white" />
+                    )}
+                  </button>
+                </div>
+              </div>
+            ) : <div />
+          }
         </div>
       </div>
 
@@ -102,25 +109,29 @@ const Navbar = () => {
                 {link.label}
               </a>
             ))} */}
-            <div className="px-3 py-2 space-y-5">
-              <div className="relative w-full">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <FiSearch className="text-gray-500" />
-                </div>
-                <input
-                  type="text"
-                  placeholder="Search"
-                  onChange={(e) => setSearch(e.target.value)}
-                  className="
+            {
+              location === '/homepage' ? (
+                <div className="px-3 py-2 space-y-5">
+                  <div className="relative w-full">
+                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                      <FiSearch className="text-gray-500" />
+                    </div>
+                    <input
+                      type="text"
+                      placeholder="Search"
+                      onChange={(e) => setSearch(e.target.value)}
+                      className="
                     bg-[#1B1A55] border border-gray-700 rounded-xl 
                     pl-10 pr-4 py-2 md:w-64 text-white placeholder-gray-500
                     focus:outline-none focus:ring-2 focus:ring-gray-600
                     transition-all duration-300 w-full
                   "
-                />
-              </div>
-              <CategoryList />
-            </div>
+                    />
+                  </div>
+                  <CategoryList />
+                </div>
+              ) : <div />
+            }
           </div>
         </div>
       )}

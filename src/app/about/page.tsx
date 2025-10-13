@@ -65,9 +65,9 @@ const About = () => {
                     <div className="w-full h-[30vh] lg:h-[50vh] ">
                         <Image
                             unoptimized={true}
-                            src={'/assets/about-1.webp'}
+                            src={'/assets/about-2.webp'}
                             alt="imgurlBannerdetailnews"
-                            className="object-cover rounded-md" fill
+                            className="object-cover rounded-md object-top-right" fill
                         />
                     </div>
                 </div>

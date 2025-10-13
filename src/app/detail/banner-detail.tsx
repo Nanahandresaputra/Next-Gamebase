@@ -1,6 +1,6 @@
 'use client'
 
-import React, { CSSProperties, useState } from 'react'
+import React, { CSSProperties, useMemo, useState } from 'react'
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Swiper as SwiperCore } from 'swiper';
@@ -12,22 +12,44 @@ import 'swiper/css/thumbs';
 
 
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
-import { trailersGame } from '@/dummy-data/trailers-game';
-import { screenshotsGame } from '@/dummy-data/screenshots-game';
 import Image from 'next/image';
 import Video from '@/components/videoplay';
 
-const BannerDetail = () => {
-    const [thumbsSwiper, setThumbsSwiper] = useState<SwiperCore | null>(null)
-    const trailer = trailersGame.results.map((data) => ({ preview: data.preview, isData: data.data[480] }))[0]
-    const screenshot = screenshotsGame.results.map((data) => ({ preview: data.image, isData: data.image }))
+import SkeletonTrailerGame from '@/components/skeleton-trailer-game';
+import SkeletonSSGame from '@/components/skeleton-ss-game';
+import { ResultScreenshot, ResultTrailer } from '@/store/features/game-detail/detail.interface';
 
-    const mediaset = [trailer, ...screenshot]
+interface PropTypes {
+    trailerData: ResultTrailer[];
+    screenshot: ResultScreenshot[];
+    isLoadingSs: boolean;
+    isLoadingTrailer: boolean;
+    isErrorSs: boolean;
+    isErrorTrailer: boolean;
+}
+
+const BannerDetail = ({ trailerData, screenshot, isLoadingSs, isLoadingTrailer, isErrorSs, isErrorTrailer }: PropTypes) => {
+
+
+    const mediaset = useMemo(() => {
+        const trailerGame = trailerData.map((data) => ({ preview: data.preview, isData: data.data[480] }))[0]
+        const ssGame = screenshot?.map((data) => ({ preview: data.image, isData: data.image }))
+        const mediadata = [trailerGame, ...ssGame].filter(data => data !== undefined)
+
+        return mediadata
+
+    }, [trailerData, screenshot])
+
+
+
+    console.log({ trailerData, screenshot })
+
+    const [thumbsSwiper, setThumbsSwiper] = useState<SwiperCore | null>(null)
 
     console.log({ mediaset })
 
     return (
-        <section>
+        <section className='space-y-3'>
             <Swiper
                 // style={{
                 //     '--swiper-navigation-color': '#fff',
@@ -43,15 +65,15 @@ const BannerDetail = () => {
                 {
                     mediaset.map((data, index) => (
                         <SwiperSlide key={index}>
-                            {
-                                index === 0 ? (
-                                    <Video videoUrl={data.isData} className='h-[25vh] lg:h-[53vh] w-full object-cover rounded-t-md' poster={data.preview} />
+                            {isLoadingTrailer || isLoadingSs ? <SkeletonTrailerGame /> :
+                                index === 0 && trailerData.length > 0 ? (
+                                    <Video videoUrl={data?.isData ?? 'https://www.youtube.com/watch?v=3Df-26ZtIPA'} className='h-[25vh] lg:h-[53vh] w-full object-cover rounded-t-md' poster={data?.preview ?? 'https://www.codecks.io/_astro/steam_header.lQtF3kFc.jpg'} />
                                 ) : (
                                     <div className="relative h-[25vh] lg:h-[53vh] ">
                                         <Image
                                             unoptimized={true}
-                                            loader={() => data.isData}
-                                            src={data.isData}
+                                            loader={() => data?.isData ?? 'https://www.codecks.io/_astro/steam_header.lQtF3kFc.jpg'}
+                                            src={data?.isData ?? 'https://www.codecks.io/_astro/steam_header.lQtF3kFc.jpg'}
                                             alt="imgurl"
                                             className="object-cover rounded-t-md" fill
                                         />
@@ -84,15 +106,15 @@ const BannerDetail = () => {
                         <SwiperSlide key={index}
 
                         >
-                            <div className="relative h-[5vh] lg:h-[10vh] ">
+                            {isLoadingSs ? <SkeletonSSGame /> : <div className="relative h-[5vh] lg:h-[10vh] ">
                                 <Image
                                     unoptimized={true}
-                                    loader={() => data.preview}
-                                    src={data.preview}
+                                    loader={() => data?.preview ?? 'https://www.codecks.io/_astro/steam_header.lQtF3kFc.jpg'}
+                                    src={data?.preview ?? 'https://www.codecks.io/_astro/steam_header.lQtF3kFc.jpg'}
                                     alt="imgurl"
                                     className="object-cover rounded-md" fill
                                 />
-                            </div>
+                            </div>}
                         </SwiperSlide>
                     ))
                 }

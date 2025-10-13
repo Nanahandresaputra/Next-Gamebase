@@ -12,7 +12,7 @@ export interface DetailNewsInterface {
   authors: string;
   title: string;
   body: string;
-  publish_date: string;
+  publish_date: string | Date;
 }
 
 export interface GlobalContextInterface {

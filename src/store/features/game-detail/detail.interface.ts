@@ -152,20 +152,12 @@ export interface Store {
   store: Developer;
 }
 
-export interface ScreenshotGameInterface {
-  results: ResultScreenshot[];
-}
-
 export interface ResultScreenshot {
   id: number;
   image: string;
   width: number;
   height: number;
   is_deleted: boolean;
-}
-
-export interface TrailerGameInterface {
-  results: ResultTrailer[];
 }
 
 export interface ResultTrailer {
