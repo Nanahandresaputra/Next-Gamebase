@@ -14,33 +14,30 @@ const CategoryList = () => {
     const [initialGenres, setInitialGenres] = useState<ListGenres[]>([]);
 
 
-    const genres = useMemo(() => {
-        if (initialGenres) {
-            return initialGenres.map((data) => ({
-                label: data.name,
-                value: data.id
-            }))
-        } else {
-            return []
-        }
-    }, [initialGenres])
+    const genresData = initialGenres.map((data) => ({
+        label: data.name,
+        value: data.id
+    }))
 
     const selectedGenres = (e: string) => {
         contextData?.setSelectGenre(e)
         store.dispatch(setListGamesAction.currentPage(1))
     }
+    const genres = localStorage?.listGenres;
 
     useEffect(() => {
-        const genres = localStorage?.listGenres;
         if (genres) {
             setInitialGenres(JSON.parse(genres));
+
         }
-    }, []);
+    }, [genres]);
+
+
 
 
     return (
         <CheckboxGroup onChange={(e) => selectedGenres(e.toString())} label="Category" classNames={{ label: 'text-white/70 font-semibold lg:mb-5', wrapper: 'grid grid-cols-2 lg:flex flex-col' }} >
-            {genres.map((data, index) => (
+            {genresData.map((data, index) => (
                 <Checkbox key={index} classNames={{ label: 'text-white/70', }} value={data.value.toString()}>{data.label}</Checkbox>
             ))}
 

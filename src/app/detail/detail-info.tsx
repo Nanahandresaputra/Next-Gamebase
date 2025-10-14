@@ -58,32 +58,32 @@ const DetailInfo = ({ released, website, rating, parent_platforms, genres, esrbR
             </div>
             <div className='grid grid-cols-3 py-3 lg:py-5 border-white/70 border-b'>
                 <p className='text-white/70'>Released</p>
-                <p className='text-white text-end col-span-2'>{moment(released).format('DD MMMM YYYY')}</p>
+                <p className='text-white text-end col-span-2 break-words'>{moment(released).format('DD MMMM YYYY')}</p>
             </div>
             <div className='grid grid-cols-3 py-3 lg:py-5 border-white/70 border-b'>
                 <p className='text-white/70'>Rating</p>
-                <p className='text-white text-end col-span-2'>{rating}</p>
+                <p className='text-white text-end col-span-2 break-words'>{rating}</p>
             </div>
             <div className='grid grid-cols-3 py-3 lg:py-5 border-white/70 border-b'>
                 <p className='text-white/70'>Genres</p>
-                <p className='text-white text-end col-span-2'>{genres?.toString().replaceAll(',', ', ')}</p>
+                <p className='text-white text-end col-span-2 break-words'>{genres?.toString().replaceAll(',', ', ')}</p>
             </div>
             <div className='grid grid-cols-3 py-3 lg:py-5 border-white/70 border-b'>
                 <p className='text-white/70'>Platforms</p>
-                <p className='text-white text-end col-span-2'>{parent_platforms?.toString().replaceAll(',', ', ')}</p>
+                <p className='text-white text-end col-span-2 break-words'>{parent_platforms?.toString().replaceAll(',', ', ')}</p>
             </div>
             <div className='grid grid-cols-3 py-3 lg:py-5 border-white/70 border-b'>
                 <p className='text-white/70'>Website</p>
-                <p className='text-white text-end col-span-2'>{website}</p>
+                <p className='text-white text-end col-span-2 break-words'>{website}</p>
             </div>
             <div className='grid grid-cols-3 py-3 lg:py-5 border-white/70 border-b'>
                 <p className='text-white/70'>Developers</p>
 
-                <p className='text-white text-end col-span-2'>{developers?.toString().replaceAll(',', ', ')}</p>
+                <p className='text-white text-end col-span-2 break-words'>{developers?.toString().replaceAll(',', ', ')}</p>
             </div>
             <div className='grid grid-cols-3 py-3 lg:py-5 border-white/70 border-b'>
                 <p className='text-white/70'>Publishers</p>
-                <p className='text-white text-end col-span-2'>{publisher?.toString().replaceAll(',', ', ')}</p>
+                <p className='text-white text-end col-span-2 break-words'>{publisher?.toString().replaceAll(',', ', ')}</p>
             </div>
 
         </section>

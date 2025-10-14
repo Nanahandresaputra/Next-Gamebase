@@ -7,7 +7,7 @@ export const getGenresHelpers = async () => {
   await new Promise<ListGenres>((resolve, reject) => {
     httpGet({ params, url: `${config.baseUrlRawg}/genres` })
       .then((res) => {
-        resolve(res);
+        resolve(res.results);
         const listGenres = res.results;
         localStorage.setItem("listGenres", JSON.stringify(listGenres));
       })
