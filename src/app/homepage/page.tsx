@@ -8,7 +8,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, RootState } from '@/store/store'
 import { getListGamesAction } from '@/store/features/game/game-slice'
 import { getGenresHelpers } from '@/helpers/genres/genres'
-import { ListGenres } from '@/helpers/genres/genres.interfaces'
 import { GlobalContext } from '../provider'
 
 
@@ -27,11 +26,7 @@ const HomePage = () => {
     }, [currentPage, contextData])
 
     const getGenreList = useCallback(() => {
-        const initialGenres: ListGenres = localStorage?.listGenres as ListGenres;
-
-        if (!initialGenres) {
-            getGenresHelpers()
-        }
+        getGenresHelpers()
     }, [])
 
     const getDatasInit = useCallback(() => {

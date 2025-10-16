@@ -10,6 +10,10 @@ export const getGenresHelpers = async () => {
         resolve(res.results);
         const listGenres = res.results;
         localStorage.setItem("listGenres", JSON.stringify(listGenres));
+
+        window.dispatchEvent(
+          new CustomEvent("listGenresUpdated", { detail: listGenres })
+        );
       })
       .catch((err) => {
         reject(err);

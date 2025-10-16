@@ -23,14 +23,27 @@ const CategoryList = () => {
         contextData?.setSelectGenre(e)
         store.dispatch(setListGamesAction.currentPage(1))
     }
-    const genres = localStorage?.listGenres;
-
     useEffect(() => {
-        if (genres) {
-            setInitialGenres(JSON.parse(genres));
+        const load = () => {
+            const raw = typeof window !== "undefined" ? localStorage.getItem("listGenres") : null;
+            if (raw) setInitialGenres(JSON.parse(raw));
+        };
 
-        }
-    }, [genres]);
+        load();
+
+        const handler = (e: Event) => {
+
+            const detail = (e as CustomEvent)?.detail;
+            if (detail) setInitialGenres(detail);
+            else load();
+        };
+
+        window.addEventListener("listGenresUpdated", handler);
+
+        return () => {
+            window.removeEventListener("listGenresUpdated", handler);
+        };
+    }, []);
 
 
 
