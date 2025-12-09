@@ -4,11 +4,12 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import BannerDetail from './banner-detail'
 import DetailInfo from './detail-info'
 import { useDispatch, useSelector } from 'react-redux'
-import { AppDispatch, RootState } from '@/store/store'
+import { AppDispatch, RootState, store } from '@/store/store'
 import { getDetailGameAction, getScreenshotGameAction, getTrailerGameAction } from '@/store/features/game-detail/detail-slice'
 import { useRouter } from 'next/navigation'
 import SkeletonDetailDescription from '@/components/skeleteon-detail-descripton'
 import SkeletonDetailInfo from '@/components/skeleton-detail-info'
+import { setListGamesAction } from '@/store/features/game/game-slice'
 
 
 const DetailGame = () => {
@@ -40,6 +41,7 @@ const DetailGame = () => {
             dispatch(getScreenshotGameAction({ game_id: gameIdData }))
             dispatch(getDetailGameAction({ game_id: gameIdData }))
         } else {
+            store.dispatch(setListGamesAction.reset())
             router.push('/homepage')
         }
     }, [])

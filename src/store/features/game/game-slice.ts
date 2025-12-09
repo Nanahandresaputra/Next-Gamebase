@@ -45,6 +45,7 @@ const listGameSlice = createSlice({
     currentPage: (state, action: PayloadAction<number>) => {
       state.currentState = action.payload;
     },
+    reset: () => initialState,
   },
   extraReducers(builder) {
     builder.addCase(getListGamesAction.pending, (state) => {

@@ -3,7 +3,6 @@
 import Button from '@/components/button'
 import CategoryList from '@/components/category-list'
 import GameCard from '@/components/game-card'
-import PaginationComp from '@/components/pagination'
 import SkeletonCardGames from '@/components/skeleton-list-games'
 import { setListGamesAction } from '@/store/features/game/game-slice'
 import { ListGames as ListGamesInterface } from '@/store/features/game/game.interface'
@@ -20,6 +19,7 @@ interface PropTypes {
 
 const ListGames = ({ listGames, isLoading, currentPage, setCurrentPage }: PropTypes) => {
     const router = useRouter()
+
 
     const listDataGames = useMemo(() => {
 

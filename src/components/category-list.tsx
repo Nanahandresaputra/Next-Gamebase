@@ -25,8 +25,10 @@ const CategoryList = () => {
     }
     useEffect(() => {
         const load = () => {
-            const raw = typeof window !== "undefined" ? localStorage.getItem("listGenres") : null;
-            if (raw) setInitialGenres(JSON.parse(raw));
+            const raw = typeof window.localStorage.getItem('listGenres') !== "undefined" ? localStorage.getItem("listGenres") : null;
+            if (raw) {
+                setInitialGenres(JSON.parse(raw))
+            };
         };
 
         load();

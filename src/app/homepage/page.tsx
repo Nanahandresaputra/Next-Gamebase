@@ -20,7 +20,7 @@ const HomePage = () => {
     const dispatch = useDispatch<AppDispatch>()
 
     const getDatas = useCallback(() => {
-        if (contextData?.search && contextData?.search !== '' && contextData?.search?.length > 3 || contextData?.selectGenre && contextData?.selectGenre != '') {
+        if ((contextData?.search && contextData?.search !== '' && contextData?.search?.length > 3) || (contextData?.selectGenre && contextData?.selectGenre != '') || (currentPage > 1)) {
             dispatch(getListGamesAction({ page: currentPage, ...(contextData?.selectGenre && contextData?.selectGenre != '' && { genres: contextData?.selectGenre }), ...(contextData?.search && contextData?.search !== '' && contextData?.search?.length > 3 && { search: contextData?.search }) }))
         }
     }, [currentPage, contextData])
